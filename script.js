@@ -2,12 +2,16 @@
 
 // Media query
 let deviceIsSmall = window.matchMedia("(max-width: 675px)");
-
+const hamburgerElement = document.querySelector(".hamburger");
 // On click of the hamburger, open the nav/main-menu top
 // level list items
-document.querySelector(".hamburger").addEventListener("click", function () {
+hamburgerElement.addEventListener("click", function () {
   const nav = document.querySelector("nav");
   nav.classList.add("nav-open");
+
+  // Hamburger element z-index is set to 0 so it fades when
+  // other menus open.
+  hamburgerElement.style.zIndex = "0";
 });
 
 // On click of the "x", close the nav/main-menu top
@@ -140,6 +144,9 @@ function toggleListeners(mql) {
     closeMenu(".sub-menu-2");
     closeMenu(".sub-menu-3");
     closeMenu(".sub-menu-4");
+
+    // Resets hamburger z-index back to 3
+    hamburgerElement.style.zIndex = "3";
   }
 }
 
