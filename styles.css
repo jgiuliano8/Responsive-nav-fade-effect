@@ -11,10 +11,17 @@ body {
   position: relative;
   background-color: #fff;
   margin: 0;
-  width: 100vw;
-  height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+/* nav and it's sub-menus are 100% browser width and height,
+   just hidden at first. Then on clicks, they transition to
+   visible and opaque, giving them a fading in and out effect*/
 
 nav,
 .sub-menu {
@@ -40,11 +47,16 @@ nav {
   z-index: 5;
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-}
-
+/* The nav-open class is added and removed to either the
+   nav or the applicable sub-menu via JavaScript. When it's
+   added, the menu becomes visible. When it's removed, the
+   respective menu then becomes invisible. The fading in and
+   out effect is accomplished via transitioning the opacity
+   and visibility.
+   
+   Both styles/transitions are needed. Without transitioning
+   opacity, the fade effect does not occur. Without visibility,
+   everything is invisible, but still clickable. */
 .nav-open {
   opacity: 1;
   visibility: visible;
@@ -82,7 +94,15 @@ header {
 
 .hamburger {
   display: block;
-  /* position: relative; */
+
+  /* Added position and z-index because hamburger was fading
+     in on media query transition. But actually nav was fading
+     out and then hamburger would slowly appear. z-index 3 put
+     hamburger above nav, but below sub-menus still.
+  */
+  position: relative;
+  z-index: 3;
+
   margin-left: auto;
   margin-right: 1em;
   font-size: 1.75rem;
@@ -115,6 +135,7 @@ a {
   padding-left: 1em;
   opacity: 0.65;
 }
+
 /* Media query */
 
 @media screen and (min-width: 675px) {
@@ -133,6 +154,9 @@ a {
     padding: 0;
   }
 
+  /* Need to reset positioning, opacity, visibility and
+     background, as well as transitions, on nav and
+     sub-menus. */
   nav,
   .sub-menu {
     position: unset;
@@ -163,10 +187,15 @@ a {
     border-bottom: none;
   }
 
+  /* Sub-menus start out as display none which makes them
+     "non-existent". */
   .sub-menu {
     display: none;
   }
 
+  /* On hover of the main menu list items, the sub-menus
+     appear, but position absolute helps them appear over
+     exisitng content, instead of affecting the layout. */
   #announcements:hover .sub-menu-1,
   #education:hover .sub-menu-2,
   #services:hover .sub-menu-3,
@@ -197,6 +226,10 @@ a {
     opacity: 0.65;
   }
 
+  /* The effect class and it's hover state puts a
+     blue line under each main-menu list item that
+     appears starting from the middle and increasing
+     outward. */
   .effect::after {
     content: "";
     position: absolute;
