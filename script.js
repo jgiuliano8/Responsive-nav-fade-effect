@@ -10,7 +10,9 @@ document.querySelector(".close-nav").addEventListener("click", function () {
   nav.classList.remove("nav-open");
 });
 
+// Media queries
 let mediaQueryList = window.matchMedia("(min-width: 675px)");
+let deviceIsSmall = window.matchMedia("(max-width: 675px)");
 
 function clearNav(mql) {
   if (mql.matches) {
@@ -36,6 +38,11 @@ function closeMenu(subMenu) {
   const subMenuElement = document.querySelector(subMenu);
   subMenuElement.classList.remove("nav-open");
   // subMenuElement.outerHTML = subMenuElement.outerHTML;
+}
+
+function removeInvisibility() {
+  const menuElement = document.querySelector(".main-menu");
+  menuElement.style.display = "flex";
 }
 
 function toggleListeners(mql) {
@@ -72,6 +79,14 @@ function toggleListeners(mql) {
       },
       { capture: true }
     );
+
+    // Make main menu invisible momentarily.
+    // Transitioning visibility made the main menu
+    // visible and then fade to hidden, when resizing
+    // browser from larger to smaller widths
+    const menuElement = document.querySelector(".main-menu");
+    menuElement.style.display = "none";
+    setTimeout(removeInvisibility, 750);
   } else {
     announcementMenu.outerHTML = announcementMenu.outerHTML;
     educationMenu.outerHTML = educationMenu.outerHTML;
@@ -84,12 +99,12 @@ function toggleListeners(mql) {
   }
 }
 
-clearNav(mediaQueryList); // Call listener function at run time
+function tempInvisible() {}
 
-mediaQueryList.addEventListener("change", clearNav); // Attach listener function on state changes
-
-let deviceIsSmall = window.matchMedia("(max-width: 675px)");
-
+// Call listener functions at run time
+clearNav(mediaQueryList);
 toggleListeners(deviceIsSmall);
 
-deviceIsSmall.addEventListener("change", toggleListeners); // Attach listener function on state changes
+// Attach listener functions on state changes
+mediaQueryList.addEventListener("change", clearNav);
+deviceIsSmall.addEventListener("change", toggleListeners);

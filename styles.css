@@ -8,7 +8,11 @@ html {
 }
 
 body {
+  position: relative;
+  background-color: #fff;
   margin: 0;
+  width: 100vw;
+  height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -20,10 +24,20 @@ nav,
   top: 0;
   right: 0;
   bottom: 0;
-  left: 150%;
-  background-color: white;
-  transition: left 700ms;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 750ms, visibility 750ms;
   transition-timing-function: ease-in-out;
+}
+
+nav {
+  background-color: white;
+}
+
+.sub-menu {
+  background-color: #e5e5e5;
+  z-index: 5;
 }
 
 header {
@@ -32,7 +46,8 @@ header {
 }
 
 .nav-open {
-  left: 0;
+  opacity: 1;
+  visibility: visible;
 }
 
 .main-menu,
@@ -55,8 +70,6 @@ header {
 }
 
 .close-nav {
-  /* align-self: flex-start; */
-  /* padding: 0 0.5em; */
   font-size: 2rem;
 }
 
@@ -69,6 +82,7 @@ header {
 
 .hamburger {
   display: block;
+  /* position: relative; */
   margin-left: auto;
   margin-right: 1em;
   font-size: 1.75rem;
@@ -90,11 +104,6 @@ a {
 .main-menu a {
   color: rgb(32, 32, 32);
   text-transform: uppercase;
-}
-
-.sub-menu {
-  z-index: 5;
-  background-color: #e5e5e5;
 }
 
 .sub-menu a:active {
@@ -133,6 +142,7 @@ a {
     left: unset;
     margin-left: auto;
     opacity: 1;
+    visibility: visible;
     background-color: transparent;
     transition: none;
   }
@@ -155,7 +165,6 @@ a {
 
   .sub-menu {
     display: none;
-    z-index: initial;
   }
 
   #announcements:hover .sub-menu-1,
