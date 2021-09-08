@@ -6,7 +6,7 @@ const hamburgerElement = document.querySelector(".hamburger");
 // On click of the hamburger, open the nav/main-menu top
 // level list items
 hamburgerElement.addEventListener("click", function () {
-  const nav = document.querySelector("nav");
+  const nav = document.querySelector(".navigation");
   nav.classList.add("nav-open");
 
   // Hamburger element z-index is set to 0 so it fades when
@@ -17,7 +17,7 @@ hamburgerElement.addEventListener("click", function () {
 // On click of the "x", close the nav/main-menu top
 // level list items
 document.querySelector(".close-nav").addEventListener("click", function () {
-  const nav = document.querySelector("nav");
+  const nav = document.querySelector(".navigation");
   nav.classList.remove("nav-open");
 });
 
@@ -27,7 +27,7 @@ function clearNav(mql) {
   // If the meddia query list does NOT match, i.e. device
   // is NOT small, then...
   if (!mql.matches) {
-    const navigation = document.querySelector("nav");
+    const navigation = document.querySelector(".navigation");
     navigation.classList.remove("nav-open");
   }
 }
@@ -77,10 +77,10 @@ function removeInvisibility() {
 // (See comments in the function itself for where this is done.)
 function toggleListeners(mql) {
   // These elements are the main menu list items.
-  const announcementMenu = document.getElementById("announcements");
-  const educationMenu = document.getElementById("education");
-  const servicesMenu = document.getElementById("services");
-  const supportMenu = document.getElementById("support");
+  const announcementMenu = document.querySelector(".js-announcements");
+  const educationMenu = document.querySelector(".js-education");
+  const servicesMenu = document.querySelector(".js-services");
+  const supportMenu = document.querySelector(".js-support");
 
   // If media query is true, ie browser is smaller than 675px
   if (mql.matches) {

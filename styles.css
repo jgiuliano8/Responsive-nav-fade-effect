@@ -1,10 +1,10 @@
 * {
   box-sizing: border-box;
-  --accent-color-1: 55, 122, 167;
 }
 
 html {
   font-size: 16px;
+  --accent-color-1: 55, 122, 167;
 }
 
 body {
@@ -23,7 +23,7 @@ header {
    just hidden at first. Then on clicks, they transition to
    visible and opaque, giving them a fading in and out effect*/
 
-nav,
+.navigation,
 .sub-menu {
   display: flex;
   justify-content: center;
@@ -38,7 +38,7 @@ nav,
   transition-timing-function: ease-in-out;
 }
 
-nav {
+.navigation {
   background-color: white;
 }
 
@@ -63,7 +63,7 @@ nav {
 }
 
 .main-menu,
-.sub-menu > ul {
+.sub-menu__list {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,11 +108,18 @@ nav {
   font-size: 1.75rem;
 }
 
-.main-menu li {
+.main-menu,
+.sub-menu__list {
+  list-style-type: none;
+}
+
+.main-menu__list-item,
+.main-menu__title-list-item,
+.sub-menu__list-item,
+.sub-menu__title-list-item {
   display: inline-block;
   position: relative;
   letter-spacing: 1px;
-  list-style: none;
   padding: 1em 1em;
   border-bottom: 1px dotted rgba(32, 32, 32, 0.2);
 }
@@ -121,17 +128,18 @@ a {
   text-decoration: none;
 }
 
-.main-menu a {
+.main-menu__text,
+.sub-menu__text {
   color: rgb(32, 32, 32);
   text-transform: uppercase;
 }
 
-.sub-menu a:active {
+.sub-menu__text:active {
   opacity: 0.65;
 }
 
-.main-menu-title,
-.sub-menu-title {
+.main-menu__title-text,
+.sub-menu__title-text {
   padding-left: 1em;
   opacity: 0.65;
 }
@@ -145,10 +153,10 @@ a {
   .close-sub-menu-2,
   .close-sub-menu-3,
   .close-sub-menu-4,
-  .main-menu-title,
-  .main-menu-title-li,
-  .sub-menu-title-li,
-  .sub-menu-title {
+  .main-menu__title-text,
+  .main-menu__title,
+  .sub-menu__title,
+  .sub-menu__title-text {
     display: none;
     margin: 0;
     padding: 0;
@@ -157,7 +165,7 @@ a {
   /* Need to reset positioning, opacity, visibility and
      background, as well as transitions, on nav and
      sub-menus. */
-  nav,
+  .navigation,
   .sub-menu {
     position: unset;
     top: unset;
@@ -181,7 +189,10 @@ a {
     font-size: 12px;
   }
 
-  .main-menu li {
+  .main-menu__list-item,
+  .main-menu__title-list-item,
+  .sub-menu__list-item,
+  .sub-menu__title-list-item {
     margin: 0 1em;
     padding: 0;
     border-bottom: none;
@@ -196,33 +207,33 @@ a {
   /* On hover of the main menu list items, the sub-menus
      appear, but position absolute helps them appear over
      exisitng content, instead of affecting the layout. */
-  #announcements:hover .sub-menu-1,
-  #education:hover .sub-menu-2,
-  #services:hover .sub-menu-3,
-  #support:hover .sub-menu-4 {
+  .main-menu__list-item:hover .sub-menu-1,
+  .main-menu__list-item:hover .sub-menu-2,
+  .main-menu__list-item:hover .sub-menu-3,
+  .main-menu__list-item:hover .sub-menu-4 {
     display: block;
     position: absolute;
     border: 2px solid rgb(var(--accent-color-1));
   }
 
-  #announcements > a,
-  #education > a,
-  #services > a,
-  #support > a {
+  .js-announcements > a,
+  .js-education > a,
+  .js-services > a,
+  .js-support > a {
     cursor: default;
   }
 
-  .sub-menu ul {
+  .sub-menu__list {
     margin: 0;
     padding: 0;
     background-color: transparent;
   }
 
-  .sub-menu li {
+  .sub-menu__list-item {
     margin: 0.5em 1em;
   }
 
-  .sub-menu a:hover {
+  .sub-menu__text:hover {
     opacity: 0.65;
   }
 
