@@ -40,6 +40,7 @@ These are screenshots of the final edit in Firefox.
 
 - Semantic HTML5 markup
 - CSS3
+- BEM
 - Flexbox
 - JavaScript
 
