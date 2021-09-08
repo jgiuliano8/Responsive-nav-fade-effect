@@ -60,7 +60,7 @@ function closeMenu(subMenu) {
 // browser is resized from above 675px to below 675px. The mobile
 // main-menu would appear momentarily and then fade out because
 // of the transitioning of main-menu visibility from visible,
-// while the browser ws larger than 675px, to hidden when the
+// while the browser was larger than 675px, to hidden when the
 // browser initially resized below 675px.
 //
 // Specifically, this function changes the display: none on

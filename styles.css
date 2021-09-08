@@ -114,9 +114,7 @@ header {
 }
 
 .main-menu__list-item,
-.main-menu__title-list-item,
-.sub-menu__list-item,
-.sub-menu__title-list-item {
+.sub-menu__list-item {
   display: inline-block;
   position: relative;
   letter-spacing: 1px;
@@ -154,8 +152,8 @@ a {
   .close-sub-menu-3,
   .close-sub-menu-4,
   .main-menu__title-text,
-  .main-menu__title,
-  .sub-menu__title,
+  .main-menu__list-item--title,
+  .sub-menu__list-item--title,
   .sub-menu__title-text {
     display: none;
     margin: 0;
@@ -190,9 +188,7 @@ a {
   }
 
   .main-menu__list-item,
-  .main-menu__title-list-item,
-  .sub-menu__list-item,
-  .sub-menu__title-list-item {
+  .sub-menu__list-item {
     margin: 0 1em;
     padding: 0;
     border-bottom: none;
